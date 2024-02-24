@@ -58,11 +58,38 @@ public class SinglyLinkedList {
     public void delete(int index) {
 
         // write your solution here
+        Node current = head;
+        int i = 1;
+
+        if (index < 0){
+            System.out.println("Index is negative");
+            return;
+        }
+        if (index == 0 && head != null){
+            head = head.next;
+            return;
+        }
+        while(i < index && current != null){
+            i++;
+            current = current.next;
+        }
+        if (current == null) {
+            System.out.println("Invalid index");
+            return;
+        }
+        current.next = current.next.next;
     }
 
     // Method to get the size of the list
     public int size() {
         // write your solution here
-        return 0;
+        Node current = head;
+        int result = 0;
+        while (current != null) {
+            result++;
+            current = current.next;
+        }
+        System.out.println("size is " + result);
+        return result;
     }
 }
